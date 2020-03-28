@@ -97,7 +97,7 @@ class Petugas extends CI_Controller
             $this->load->view('error');
         } else {
             $data['users'] = $this->Users_model->dataUsers();
-            $data['user'] = $this->Users_model->dataAdmin();
+            $data['user'] = $this->Users_model->dataPetugasRow();
 
             $data['masyarakat'] = $this->db->get('warga')->result_array();
 
