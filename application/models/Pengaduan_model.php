@@ -63,35 +63,30 @@ class Pengaduan_model extends CI_Model {
 
     public function joinKategoriPengaduanProses()
     {
+        $petugas = $this->kategoriPetugas();
+        $id = $petugas['id_kategori'];
         $query = "SELECT `pengaduan`.*, `kategori` 
                 FROM `pengaduan` JOIN `kategori` 
                 ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `status` LIKE 'p%' AND `pengaduan`.`id_kategori` = $id;
                 ";
-       $this->db->query($query)->result_array();
-       
-        $this->db->select('*');
-        $this->db->from($this->_table);
-        $this->db->like('status', 'proses', 'pending');
-        return $this->db->get()->result_array();
+        return $this->db->query($query)->result_array();
 
     }
 
     public function joinKategoriPengaduanSelesai() //join kategori - pengaduan yang statusnya selesai
     {
+        $petugas = $this->kategoriPetugas();
+        $id = $petugas['id_kategori'];
         $query = "SELECT `pengaduan`.*, `kategori` 
                 FROM `pengaduan` JOIN `kategori` 
                 ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `status` LIKE 'selesai' AND `pengaduan`.`id_kategori` = $id;
                 ";
-        $this->db->query($query)->result_array();
-
-        $this->db->select('*');
-        $this->db->from($this->_table);
-        $this->db->like('status', 'selesai');
-
-        return $this->db->get()->result_array();
+        return $this->db->query($query)->result_array();
     }
 
-    public function viewPengaduan()
+    public function viewPengaduan() //for masyrakatat
     {
         $user = $this->warga();
         $this->db->select('*');
@@ -99,14 +94,14 @@ class Pengaduan_model extends CI_Model {
         $this->db->like('nik', $user['nik']);
         return $this->db->get()->result_array();
     }
-    public function viewPengaduanAll()
+    public function viewPengaduanAll() //for admin
     {
         $this->db->select('*');
         $this->db->from($this->_table);
         return $this->db->get()->result_array();
     }
 
-    public function pendingPengaduan()
+    public function pendingPengaduan() //for masyrakat
     {
        $user = $this->warga();
         
@@ -121,7 +116,7 @@ class Pengaduan_model extends CI_Model {
 
     }
 
-    public function prosesPengaduan()
+    public function prosesPengaduan() //for masyarakat
     {
        $user = $this->warga();
         
@@ -152,7 +147,7 @@ class Pengaduan_model extends CI_Model {
         return $this->db->get()->result_array(); 
     }
 
-    public function selesaiPengaduanAll()
+    public function selesaiPengaduanAll() //for admin
     {
         $this->db->select('*');
         $this->db->from($this->_table);

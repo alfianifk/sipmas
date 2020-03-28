@@ -11,7 +11,7 @@
                     <!-- CARD -->
                     <div class="row">
                         <div class="col-md-4 mt-2">
-                            <a href="<?= base_url('petugas/pengaduan'); ?>" class="card card-link o-hidden shadow border-bottom-info">
+                            <a href="<?= base_url('petugas/pengaduanTag'); ?>" class="card card-link o-hidden shadow border-bottom-info">
                                 <div class="card-header bg-info text-white">Jumlah Pengaduan <?= $user['status_petugas']; ?></div>
                                 <div class="card-body bg-white text-info h4">
                                     <i class="fas fa-paper-plane"> <?= count($pengaduan); ?> </i>
@@ -19,7 +19,7 @@
                             </a>
                         </div>
                         <div class="col-md-4 mt-2">
-                            <a href="<?= base_url('petugas/selesai'); ?>" class="card-link card o-hidden shadow border-bottom-success">
+                            <a href="<?= base_url('petugas/selesaiTag'); ?>" class="card-link card o-hidden shadow border-bottom-success">
                                 <div class="card-header bg-success text-white">Selesai</div>
                                 <div class="card-body bg-white text-success h4">
                                     <i class="fas fa-check-double"></i>
@@ -34,7 +34,7 @@
                             </a>
                         </div>
                         <div class="col-md-4 mt-2">
-                            <a href="<?= base_url('petugas/proses'); ?>" class="card-link card o-hidden shadow border-bottom-danger">
+                            <a href="<?= base_url('petugas/prosesTag'); ?>" class="card-link card o-hidden shadow border-bottom-danger">
                                 <div class="card-header bg-danger text-white">Proses</div>
                                 <div class="card-body bg-white text-danger h4">
                                     <div class="spinner-grow text-danger" role="status">

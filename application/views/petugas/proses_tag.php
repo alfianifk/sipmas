@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <a class="breadcrumb-item text-info" href="<?= base_url('petugas'); ?>">Dashboard</a>
-            <li class="breadcrumb-item active">Data Pengaduan <?= $user['status_petugas']; ?> </li>
+            <li class="breadcrumb-item active">Selesai </li>
         </ol>
     </nav>
 
@@ -11,7 +11,7 @@
         <div class="col-lg">
             <div class="card shadow">
                 <div class="card-header h4 text-dark text-center">
-                    <i class="fa">Data Pengaduaan <?= $user['status_petugas']; ?></i>
+                    <i class="fa">Data Pengaduaan <?= $user['status_petugas']; ?> yang Masih dan Sedang di Proses</i>
                 </div>
 
                 <div class="card-body">
@@ -35,29 +35,29 @@
                             <tbody>
                                 <tr>
                                     <?php $no = 1; ?>
-                                    <?php foreach ($join as $p) : ?>
+                                    <?php foreach ($proses as $s) : ?>
                                         <td><?= $no++; ?></td>
-                                        <td><?= $p['nik']; ?></td>
-                                        <td><?= $p['nama']; ?></td>
-                                        <td><?php $waktu = $p['tgl_pengaduan']; ?>
+                                        <td><?= $s['nik']; ?></td>
+                                        <td><?= $s['nama']; ?></td>
+                                        <td><?php $waktu = $s['tgl_pengaduan']; ?>
                                             <?= date('d M Y', $waktu); ?>
                                         </td>
-                                        <td><?= $p['kategori']; ?></td>
-                                        <td><?= $p['judul_pengaduan']; ?></td>
-                                        <td><?= $p['isi_pengaduan']; ?></td>
-                                        <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $p['foto']; ?>"></td>
+                                        <td><?= $s['kategori']; ?></td>
+                                        <td><?= $s['judul_pengaduan']; ?></td>
+                                        <td><?= $s['isi_pengaduan']; ?></td>
+                                        <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $s['foto']; ?>"></td>
                                         <td>
-                                            <?php if ($p['status'] == "pending") : ?>
+                                            <?php if ($s['status'] == "pending") : ?>
                                                 <div class="badge badge-danger">
-                                                    <?= $p['status']; ?>
+                                                    <?= $s['status']; ?>
                                                 </div>
-                                            <?php elseif ($p['status'] == "ps") : ?>
+                                            <?php elseif ($s['status'] == "ps") : ?>
                                                 <div class="badge badge-info">
-                                                    <?= $p['status']; ?>
+                                                    <?= $s['status']; ?>
                                                 </div>
                                             <?php else : ?>
                                                 <div class="badge badge-success">
-                                                    <?= $p['status']; ?>
+                                                    <?= $s['status']; ?>
                                                 </div>
                                             <?php endif; ?>
                                         </td>
