@@ -30,7 +30,7 @@
                                     </tr>
                                     <tr>
                                         <?php $no = 1; ?>
-                                        <?php foreach ($join as $proses) : ?>
+                                        <?php foreach ($prosesPengaduan as $proses) : ?>
                                             <td><?= $no++; ?></td>
                                             <td><?= $proses['nik']; ?></td>
                                             <td><?= $proses['nama']; ?></td>

@@ -129,11 +129,13 @@ class Pengaduan_model extends CI_Model {
 
     public function prosesPengaduanAll() //TAMPILKAN SEMUA PENGADUAN YANG MASIH DI PROSES
     {
-        $this->db->select('*');
-        $this->db->from($this->_table);
-        $this->db->like('status', 'proses'); //untuk PROSES
-        $this->db->or_like('status', 'pending'); 
-        return $this->db->get()->result_array();
+        $query = "SELECT `pengaduan`.*, `kategori` 
+                FROM `pengaduan` JOIN `kategori` 
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `status` LIKE 'p%'
+                ";
+        return $this->db->query($query)->result_array();
+
     }
 
     public function selesaiPengaduan()

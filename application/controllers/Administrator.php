@@ -144,8 +144,8 @@ class Administrator extends CI_Controller
         } else {
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataAdmin();
-            // $data['prosesPengaduan'] = $this->Pengaduan_model->prosesPengaduanAll();
-            $data['join'] = $this->Pengaduan_model->joinKategoriPengaduanProses();
+            $data['prosesPengaduan'] = $this->Pengaduan_model->prosesPengaduanAll();
+            // $data['join'] = $this->Pengaduan_model->joinKategoriPengaduanProses();
 
             $data['title'] = "Data Pengaduan Proses";
             $this->load->view('_partials/head', $data);
