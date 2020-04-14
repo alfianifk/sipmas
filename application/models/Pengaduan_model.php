@@ -127,7 +127,7 @@ class Pengaduan_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-    public function prosesPengaduanAll() //TAMPILKAN SEMUA PENGADUAN YANG MASIH DI PROSES
+    public function prosesPengaduanAll() //TAMPILKAN SEMUA PENGADUAN YANG MASIH DI PROSES for admin
     {
         $query = "SELECT `pengaduan`.*, `kategori` 
                 FROM `pengaduan` JOIN `kategori` 
@@ -151,10 +151,12 @@ class Pengaduan_model extends CI_Model {
 
     public function selesaiPengaduanAll() //for admin
     {
-        $this->db->select('*');
-        $this->db->from($this->_table);
-        $this->db->like('status', 'selesai'); //untuk SELESAI
-        return $this->db->get()->result_array();
+        $query = "SELECT `pengaduan`.*, `kategori` 
+                FROM `pengaduan` JOIN `kategori` 
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `status` LIKE 'selesai'
+                ";
+        return $this->db->query($query)->result_array();
     }
 
     private function _uploadImg()

@@ -156,6 +156,25 @@ class Administrator extends CI_Controller
         }
     }
 
+    public function selesai()
+    {
+        if ($this->session->userdata('role') != 'admin') {
+            $this->load->view('error');
+        } else {
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataAdmin();
+            $data['selesaiPengaduan'] = $this->Pengaduan_model->selesaiPengaduanAll();
+            // $data['join'] = $this->Pengaduan_model->joinKategoriPengaduanProses();
+
+            $data['title'] = "Data Pengaduan Proses";
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('administrator/selesai', $data);
+            $this->load->view('_partials/footer');
+        }
+    }
+
     public function pengaduan()
     {
         if ($this->session->userdata('role') != 'admin') {

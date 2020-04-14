@@ -1,11 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.nav-link
+.judul
 {
-    margin: 0px 20px 0px 20px;
+    font-family: 'Baloo Tamma 2', cursive;
+    font-weight: 600;
 }
 
-
+.sub-judul
+{
+    font-family: 'Baloo Tamma 2', cursive;
+    font-weight: 400;
+}
