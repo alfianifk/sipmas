@@ -15,6 +15,7 @@ class Petugas extends CI_Controller
         parent::__construct();
         $this->load->model('Users_model');
         $this->load->model('Pengaduan_model');
+        $this->load->model('Tanggapan_model');
     }
 
     public function index()
@@ -131,12 +132,33 @@ class Petugas extends CI_Controller
     {
         if ($this->session->userdata('role') != 'petugas') {
             $this->load->view('error');
+        }
+
+        $validation = $this->form_validation;
+
+        $validation->set_rules(
+            'tanggapan',
+            'Tanggapan',
+            'required|trim',
+            [
+                'required' => "Kolom ini harus diisi"
+            ]
+        );
+
+        if ($validation->run())
+        {
+            $this->Tanggapan_model->addTanggapan();
+            $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Pengaduan anda telah terkirim, mohon tunggu tanggapan petugas!</div>');
+            redirect('petugas');
+
         } else {
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataPetugasRow();
             $data['get_pengaduan'] = $this->Pengaduan_model->get_pengaduan($id_pengaduan);
+            $data['id_pengaduan'] = $data['get_pengaduan']['id_pengaduan'];
+            $this->session->set_userdata($data);
 
-            $data['title'] = "Data Masyarakat";
+            $data['title'] = "Tanggapan";
             $this->load->view('_partials/head', $data);
             $this->load->view('_partials/sidebar', $data);
             $this->load->view('_partials/topbar', $data);
