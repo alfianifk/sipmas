@@ -108,4 +108,13 @@ class Users_model extends CI_Model {
         $this->db->join('kategori', 'kategori.id_kategori = petugas.id_kategori');
         return $this->db->get()->result_array();
     }
+
+    public function get_masyarakat($nik)
+    {
+        $this->db->select('*');
+        $this->db->from('warga');
+        $this->db->where('nik', $nik);
+
+        return $this->db->get()->row_array();
+    }
 }

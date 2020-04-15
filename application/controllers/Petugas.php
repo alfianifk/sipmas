@@ -37,6 +37,23 @@ class Petugas extends CI_Controller
         }
     }
 
+    public function profile()
+    {
+        if ($this->session->userdata('role') != 'petugas') {
+            $this->load->view('error');
+        } else {
+            $data['title'] = "Profile";
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataPetugasRow();
+
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('petugas/profile', $data);
+            $this->load->view('_partials/footer');
+        }
+    }
+
     public function pengaduanTag() //semua pengaduan berdasarkan kategori
     {
         if ($this->session->userdata('role') != 'petugas') {
@@ -106,6 +123,42 @@ class Petugas extends CI_Controller
             $this->load->view('_partials/sidebar', $data);
             $this->load->view('_partials/topbar', $data);
             $this->load->view('petugas/masyarakat', $data);
+            $this->load->view('_partials/footer');
+        }
+    }
+
+    public function tanggapan($id_pengaduan)
+    {
+        if ($this->session->userdata('role') != 'petugas') {
+            $this->load->view('error');
+        } else {
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataPetugasRow();
+            $data['get_pengaduan'] = $this->Pengaduan_model->get_pengaduan($id_pengaduan);
+
+            $data['title'] = "Data Masyarakat";
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('petugas/tanggapan', $data);
+            $this->load->view('_partials/footer');
+        }
+    }
+
+    public function view($nik)
+    {
+        if ($this->session->userdata('role') != 'petugas') {
+            $this->load->view('error');
+        } else {
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataPetugasRow();
+            $data['get_masyarakat'] = $this->Users_model->get_masyarakat($nik);
+
+            $data['title'] = "Data Masyarakat";
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('petugas/view_profile', $data);
             $this->load->view('_partials/footer');
         }
     }

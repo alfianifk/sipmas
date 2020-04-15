@@ -13,10 +13,9 @@
                 <div class="card-header h4 text-dark text-center">
                         <i class="fa">Data Pengaduaan</i>
                     </div>
-       
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table p-4 table-bordered" width="100%" cellspacing="0">
+                                    <table class="table p-4" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>Nomor</th>
@@ -26,10 +25,7 @@
                                                 <th>Kategori</th>
                                                 <th>Judul</th>
                                                 <th>Isi</th>
-                                                <th>Gambar</th>
                                                 <th>Status</th>
-                                                <th>Aksi</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -45,13 +41,12 @@
                                                     <td><?= $p['kategori']; ?></td>
                                                     <td><?= $p['judul_pengaduan']; ?></td>
                                                     <td><?= $p['isi_pengaduan']; ?></td>
-                                                    <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $p['foto']; ?>"></td>
                                                     <td>
                                                         <?php if ($p['status'] == "pending") : ?>
                                                             <div class="badge badge-danger">
                                                                 <?= $p['status']; ?>
                                                             </div>
-                                                        <?php elseif ($p['status'] == "ps") : ?>
+                                                        <?php elseif ($p['status'] == "proses") : ?>
                                                             <div class="badge badge-info">
                                                                 <?= $p['status']; ?>
                                                             </div>
@@ -60,17 +55,6 @@
                                                                 <?= $p['status']; ?>
                                                             </div>
                                                         <?php endif; ?>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dropdown show">
-                                                            <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                            </a>
-
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                                <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                            </div>
-                                                        </div>
                                                     </td>
                                             </tr>
                                         </tbody>

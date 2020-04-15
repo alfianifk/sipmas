@@ -6,73 +6,57 @@
             <li class="breadcrumb-item active">Selesai</li>
         </ol>
     </nav>
-    <div class="container-fluid">
 
-        <div class="row">
-            <div class="card col-md-12">
-                <div class="row no-gutters">
-                    <div class="col-lg">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Selesai</h4>
-                            <div class="card-body">
-                                <table class="table table-responsive">
-                                    <thead>
-                                        <tr>
-                                            <th scope="row">Tanggal</th>
-                                            <th scope="row">Kategori</th>
-                                            <th scope="row">Judul</th>
-                                            <th scope="row">Isi</th>
-                                            <th scope="row">Gambar</th>
-                                            <th scope="row">Status</th>
-                                            <th scope="row">Aksi</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php foreach ($selesaiPengaduan as $selesai) : ?>
-                                                <td><?php $waktu = $selesai['tgl_pengaduan']; ?>
-                                                    <?= date('d M Y', $waktu); ?>
-                                                </td>
-                                                <td><?= $selesai['id_kategori']; ?></td>
-                                                <td><?= $selesai['judul_pengaduan']; ?></td>
-                                                <td><?= $selesai['isi_pengaduan']; ?></td>
-                                                <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $selesai['foto']; ?>"></td>
-                                                <td>
-                                                    <?php if ($selesai['status'] == "pending") : ?>
-                                                        <div class="badge badge-danger">
-                                                            <?= $selesai['status']; ?>
-                                                        </div>
-                                                    <?php elseif ($selesai['status'] == "prosess") : ?>
-                                                        <div class="badge badge-info">
-                                                            <?= $selesai['status']; ?>
-                                                        </div>
-                                                    <?php else : ?>
-                                                        <div class="badge badge-success">
-                                                            <?= $selesai['status']; ?>
-                                                        </div>
-                                                    <?php endif; ?>
-                                                </td>
-                                                <td>
-                                                    <div class="dropdown show">
-                                                        <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                        </a>
-
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                            <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                            <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                        </tr>
-                                    </tbody>
-                                <?php endforeach; ?>
-                                </table>
-                            </div>
-                        </div>
+    <div class="row mb-4">
+        <div class="col-lg">
+            <div class="card shadow">
+                <div class="card-header h4 text-dark text-center">
+                    <i class="fa">Data Pengaduaan yang Sudah <span class="text-success"> Selesai </span></i>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table p-4" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Nomor</th>
+                                    <th>Tanggal</th>
+                                    <th>Judul</th>
+                                    <th>Isi</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($selesaiPengaduan as $s) : ?>
+                                        <td><?= $no++; ?></td>
+                                        <td><?php $waktu = $s['tgl_pengaduan']; ?>
+                                            <?= date('d M Y', $waktu); ?>
+                                        </td>
+                                        <td><?= $s['judul_pengaduan']; ?></td>
+                                        <td><?= $s['isi_pengaduan']; ?></td>
+                                        <td>
+                                            <?php if ($s['status'] == "pending") : ?>
+                                                <div class="badge badge-danger">
+                                                    <?= $s['status']; ?>
+                                                </div>
+                                            <?php elseif ($s['status'] == "proses") : ?>
+                                                <div class="badge badge-info">
+                                                    <?= $s['status']; ?>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="badge badge-success">
+                                                    <?= $s['status']; ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </td>
+                                </tr>
+                            </tbody>
+                        <?php endforeach; ?>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+</div>

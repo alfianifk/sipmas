@@ -8,7 +8,7 @@
          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
              <?php if ($users['role'] == "admin") : ?>
                  <div class="nav-item">
-                     <div class="text-dark"><?= $user['nama_admin'] ?></div>
+                     <div class="text-dark">Administrator</div>
                  </div>
              <?php elseif ($users['role'] == "petugas") : ?>
                  <div class="nav-item">

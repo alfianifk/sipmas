@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered pl-4">
+                        <table class="table pl-4">
                             <thead class="thead strong text-dark">
                                 <tr>
                                     <th>No</th>
@@ -24,7 +24,6 @@
                                     <th>Email</th>
                                     <th>Username</th>
                                     <th>Telepon</th>
-                                    <th>Gambar</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -39,18 +38,7 @@
                                         <td><?= $m['username']; ?></td>
                                         <td><?= $m['telp']; ?></td>
                                         <td>
-                                            <img src="<?= base_url('assets/img/profile/') . $m['image']; ?>" class="img-fluid" style="max-width: 50px;">
-                                        </td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                    <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Banned</a>
-                                                </div>
-                                            </div>
+                                            <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

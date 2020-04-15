@@ -103,7 +103,10 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.table').DataTable({
-            lengthMenu: [3, 5, 10, 15, 20, 100, 200, 500],
+            dom: 'Bfrtip',
+            buttons: [
+                'print', 'pdf',
+            ]
         })
     });
 </script>

@@ -46,14 +46,26 @@ class Pengaduan_model extends CI_Model {
         $query = "SELECT `pengaduan`.*, `kategori` 
                 FROM `pengaduan` JOIN `kategori` 
                 ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
-                WHERE `pengaduan`.`id_kategori` = $id; 
+                WHERE `pengaduan`.`id_kategori` = $id AND `status` LIKE 'p%'; 
                 ";
         return $this->db->query($query)->result_array();
 
     }
 
+    public function joinKategoriPengaduanForAdm()
+    {
+        //tampilkan semua pengaduan yang statusnya pending or proses
+        $query = "SELECT `pengaduan`.*, `kategori` 
+                FROM `pengaduan` JOIN `kategori` 
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `status` LIKE 'p%'
+                ";
+        return $this->db->query($query)->result_array();
+    }
+
     public function joinKategoriPengaduanOnly()
     {
+        //tampilkan semua pengaduan yang statusnya pending or proses
         $query = "SELECT `pengaduan`.*, `kategori` 
                 FROM `pengaduan` JOIN `kategori` 
                 ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
@@ -89,10 +101,17 @@ class Pengaduan_model extends CI_Model {
     public function viewPengaduan() //for masyrakatat
     {
         $user = $this->warga();
-        $this->db->select('*');
-        $this->db->from($this->_table);
-        $this->db->like('nik', $user['nik']);
-        return $this->db->get()->result_array();
+        $nik = $user['nik'];
+        $query = "SELECT `pengaduan`.*, `kategori`
+                FROM `pengaduan` JOIN `kategori`
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `nik` = $nik
+        ";
+        return $this->db->query($query)->result_array();
+        // $this->db->select('*');
+        // $this->db->from($this->_table);
+        // $this->db->like('nik', $user['nik']);
+        // return $this->db->get()->result_array();
     }
     public function viewPengaduanAll() //for admin
     {
@@ -119,12 +138,19 @@ class Pengaduan_model extends CI_Model {
     public function prosesPengaduan() //for masyarakat
     {
        $user = $this->warga();
-        
-        $this->db->select('*');
-        $this->db->from($this->_table);
-        $this->db->like('nik', $user['nik']);
-        $this->db->like('status', 'proses'); //untuk PROSES
-        return $this->db->get()->result_array();
+       $nik = $user['nik'];
+
+        $query = "SELECT `pengaduan`.*, `kategori`
+                FROM `pengaduan` JOIN `kategori`
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                WHERE `status` LIKE 'proses' AND `nik` = $nik;
+        ";
+        return $this->db->query($query)->result_array();
+        // $this->db->select('*');
+        // $this->db->from($this->_table);
+        // $this->db->like('nik', $user['nik']);
+        // $this->db->like('status', 'proses'); //untuk PROSES
+        // return $this->db->get()->result_array();
     }
 
     public function prosesPengaduanAll() //TAMPILKAN SEMUA PENGADUAN YANG MASIH DI PROSES for admin
@@ -181,4 +207,13 @@ class Pengaduan_model extends CI_Model {
         }
 
     } 
+
+    //TANGGAPAN get_pengaduan()
+    public function get_pengaduan($id_pengaduan)
+    {
+        $this->db->select('*');
+        $this->db->from($this->_table);
+        $this->db->where('id_pengaduan', $id_pengaduan);
+        return $this->db->get()->row_array();
+    }
 }

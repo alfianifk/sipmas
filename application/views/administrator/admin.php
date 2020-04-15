@@ -20,14 +20,13 @@
                 </div>
                 <div class="card-body">
                     <div class="tabel-responsive">
-                        <table class="table table-bordered p-4">
+                        <table class="table p-4">
                             <thead class="thead strong text-dark">
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Username</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,17 +37,6 @@
                                         <td><?= $a["nama_admin"]; ?></td>
                                         <td><?= $a["email"]; ?></td>
                                         <td><?= $a["username"]; ?></td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="#">Detail</a>
-                                                    <a class="dropdown-item" href="#">Hapus</a>
-                                                </div>
-                                            </div>
-                                        </td>
                                     </div>
                                     </tr>
                                 <?php endforeach; ?>

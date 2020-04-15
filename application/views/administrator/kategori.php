@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered p-5">
+                        <table class="table p-5">
                             <thead class="thead strong text-dark">
                                 <tr>
                                     <th>No</th>
@@ -32,15 +32,8 @@
                                         <td><?= $k['nama_petugas']; ?></td>
                                         <td><?= $k['kategori']; ?></td>
                                         <td>
-                                            <div class="dropdown show">
-                                                <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                    <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                </div>
-                                            </div>
+                                            <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
+                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

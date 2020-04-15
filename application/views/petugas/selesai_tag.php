@@ -16,7 +16,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table p-4 table-bordered" width="100%" cellspacing="0">
+                        <table class="table p-4" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>Nomor</th>
@@ -26,9 +26,7 @@
                                     <th>Kategori</th>
                                     <th>Judul</th>
                                     <th>Isi</th>
-                                    <th>Gambar</th>
                                     <th>Status</th>
-                                    <th>Aksi</th>
 
                                 </tr>
                             </thead>
@@ -45,7 +43,6 @@
                                         <td><?= $s['kategori']; ?></td>
                                         <td><?= $s['judul_pengaduan']; ?></td>
                                         <td><?= $s['isi_pengaduan']; ?></td>
-                                        <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $s['foto']; ?>"></td>
                                         <td>
                                             <?php if ($s['status'] == "pending") : ?>
                                                 <div class="badge badge-danger">
@@ -60,17 +57,6 @@
                                                     <?= $s['status']; ?>
                                                 </div>
                                             <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                    <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                </div>
-                                            </div>
                                         </td>
                                 </tr>
                             </tbody>

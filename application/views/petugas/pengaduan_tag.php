@@ -16,7 +16,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table p-4 table-bordered" width="100%" cellspacing="0">
+                        <table class="table p-4" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th>Nomor</th>
@@ -26,7 +26,6 @@
                                     <th>Kategori</th>
                                     <th>Judul</th>
                                     <th>Isi</th>
-                                    <th>Gambar</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
 
@@ -45,7 +44,6 @@
                                         <td><?= $p['kategori']; ?></td>
                                         <td><?= $p['judul_pengaduan']; ?></td>
                                         <td><?= $p['isi_pengaduan']; ?></td>
-                                        <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $p['foto']; ?>"></td>
                                         <td>
                                             <?php if ($p['status'] == "pending") : ?>
                                                 <div class="badge badge-danger">

@@ -7,74 +7,63 @@
         </ol>
     </nav>
 
-        <div class="row mb-4">
-            <div class="card col">
-                <div class="row no-gutters">
-                    <div class="col-lg row mb-4">
-                        <div class="card-body">
-                            <h4 class="card-title text-center">Proses</h4>
-                            <div class="card-body">
-                                <table class="table table-responsive">
-                                    <tr>
-                                        <th scope="row">Nomor</th>
-                                        <th scope="row">NIK</th>
-                                        <th scope="row">Nama</th>
-                                        <th scope="row">Tanggal</th>
-                                        <th scope="row">Kategori</th>
-                                        <th scope="row">Judul</th>
-                                        <th scope="row">Isi</th>
-                                        <th scope="row">Gambar</th>
-                                        <th scope="row">Status</th>
-                                        <th scope="row">Aksi</th>
-
-                                    </tr>
-                                    <tr>
-                                        <?php $no = 1; ?>
-                                        <?php foreach ($prosesPengaduan as $proses) : ?>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $proses['nik']; ?></td>
-                                            <td><?= $proses['nama']; ?></td>
-                                            <td><?php $waktu = $proses['tgl_pengaduan']; ?>
-                                                <?= date('d M Y', $waktu); ?>
-                                            </td>
-                                            <td><?= $proses['kategori']; ?></td>
-                                            <td><?= $proses['judul_pengaduan']; ?></td>
-                                            <td><?= $proses['isi_pengaduan']; ?></td>
-                                            <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $proses['foto']; ?>"></td>
-                                            <td>
-                                                <?php if ($proses['status'] == "pending") : ?>
-                                                    <div class="badge badge-danger">
-                                                        <?= $proses['status']; ?>
-                                                    </div>
-                                                <?php elseif ($proses['status'] == "prosess") : ?>
-                                                    <div class="badge badge-info">
-                                                        <?= $proses['status']; ?>
-                                                    </div>
-                                                <?php else : ?>
-                                                    <div class="badge badge-success">
-                                                        <?= $proses['status']; ?>
-                                                    </div>
-                                                <?php endif; ?>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown show">
-                                                    <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                    </a>
-
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                        <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                        <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                    </div>
+    <div class="row mb-4">
+        <div class="col-lg">
+            <div class="card shadow">
+                <div class="card-header h4 text-dark text-center">
+                    <i class="fa">Data Pengaduaan yang Masih di <span class="text-warning"> Proses </span></i>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table p-4" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Nomor</th>
+                                    <th>NIK</th>
+                                    <th>Nama</th>
+                                    <th>Tanggal</th>
+                                    <th>Kategori</th>
+                                    <th>Judul</th>
+                                    <th>Isi</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($prosesPengaduan as $p) : ?>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $p['nik']; ?></td>
+                                        <td><?= $p['nama']; ?></td>
+                                        <td><?php $waktu = $p['tgl_pengaduan']; ?>
+                                            <?= date('d M Y', $waktu); ?>
+                                        </td>
+                                        <td><?= $p['kategori']; ?></td>
+                                        <td><?= $p['judul_pengaduan']; ?></td>
+                                        <td><?= $p['isi_pengaduan']; ?></td>
+                                        <td>
+                                            <?php if ($p['status'] == "pending") : ?>
+                                                <div class="badge badge-danger">
+                                                    <?= $p['status']; ?>
                                                 </div>
-                                            </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </table>
-                            </div>
-                        </div>
+                                            <?php elseif ($p['status'] == "proses") : ?>
+                                                <div class="badge badge-info">
+                                                    <?= $p['status']; ?>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="badge badge-success">
+                                                    <?= $p['status']; ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </td>
+                                </tr>
+                            </tbody>
+                        <?php endforeach; ?>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+</div>

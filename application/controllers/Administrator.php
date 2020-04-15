@@ -29,7 +29,7 @@ class Administrator extends CI_Controller
             $data['pengaduan'] = $this->Pengaduan_model->viewPengaduanAll();
             $data['selesai'] = $this->Pengaduan_model->selesaiPengaduanAll();
             $data['proses'] = $this->Pengaduan_model->prosesPengaduanAll();
-            $data['join'] = $this->Pengaduan_model->joinKategoriPengaduanOnly();
+            $data['join'] = $this->Pengaduan_model->joinKategoriPengaduanForAdm();
 
             $data['title'] = "Administrator";
             $this->load->view('_partials/head', $data);
@@ -145,7 +145,6 @@ class Administrator extends CI_Controller
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataAdmin();
             $data['prosesPengaduan'] = $this->Pengaduan_model->prosesPengaduanAll();
-            // $data['join'] = $this->Pengaduan_model->joinKategoriPengaduanProses();
 
             $data['title'] = "Data Pengaduan Proses";
             $this->load->view('_partials/head', $data);

@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-4 mt-2">
                             <a href="<?= base_url('petugas/pengaduanTag'); ?>" class="card card-link o-hidden shadow border-bottom-info">
-                                <div class="card-header bg-info text-white">Jumlah Pengaduan <?= $user['status_petugas']; ?></div>
+                                <div class="card-header bg-info text-white">Pengaduan <?= $user['status_petugas']; ?></div>
                                 <div class="card-body bg-white text-info h4">
                                     <i class="fas fa-paper-plane"> <?= count($pengaduan); ?> </i>
                                 </div>
@@ -64,7 +64,7 @@
                                         <b>Berikut beberapa pengaduan kepada <span class="text-success"><?= $user['status_petugas']; ?></span> yang belum di proses : </b>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table p-4 table-bordered" width="100%" cellspacing="0">
+                                        <table class="table p-4" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th scope="row">Nomor</th>
@@ -74,54 +74,44 @@
                                                     <th scope="row">Kategori</th>
                                                     <th scope="row">Judul</th>
                                                     <th scope="row">Isi</th>
-                                                    <th scope="row">Gambar</th>
                                                     <th scope="row">Status</th>
                                                     <th scope="row">Aksi</th>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($pengaduan as $p) : ?>
-                                                    <td><?= $no++; ?></td>
-                                                    <td><?php $waktu = $p['tgl_pengaduan']; ?>
-                                                        <?= date('d M Y', $waktu); ?>
-                                                    </td>
-                                                    <td><?= $p['nik']; ?></td>
-                                                    <td><?= $p['nama']; ?></td>
-                                                    <td><?= $p['kategori']; ?></td>
-                                                    <td><?= $p['judul_pengaduan']; ?></td>
-                                                    <td><?= $p['isi_pengaduan']; ?></td>
-                                                    <td><img class="img-thumbnail" style="max-width: 50px;" src="<?= base_url('assets/img/pengaduan/') . $p['foto']; ?>"></td>
-                                                    <td>
-                                                        <?php if ($p['status'] == "pending") : ?>
-                                                            <div class="badge badge-danger">
-                                                                <?= $p['status']; ?>
-                                                            </div>
-                                                        <?php elseif ($p['status'] == "prosess") : ?>
-                                                            <div class="badge badge-info">
-                                                                <?= $p['status']; ?>
-                                                            </div>
-                                                        <?php else : ?>
-                                                            <div class="badge badge-success">
-                                                                <?= $p['status']; ?>
-                                                            </div>
-                                                        <?php endif; ?>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dropdown show">
-                                                            <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                            </a>
-
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                                <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                                <tr>
+                                                    <?php $no = 1; ?>
+                                                    <?php foreach ($pengaduan as $p) : ?>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?php $waktu = $p['tgl_pengaduan']; ?>
+                                                            <?= date('d M Y', $waktu); ?>
+                                                        </td>
+                                                        <td><?= $p['nik']; ?></td>
+                                                        <td><?= $p['nama']; ?></td>
+                                                        <td><?= $p['kategori']; ?></td>
+                                                        <td><?= $p['judul_pengaduan']; ?></td>
+                                                        <td><?= $p['isi_pengaduan']; ?></td>
+                                                        <td>
+                                                            <?php if ($p['status'] == "pending") : ?>
+                                                                <div class="badge badge-danger">
+                                                                    <?= $p['status']; ?>
+                                                                </div>
+                                                            <?php elseif ($p['status'] == "proses") : ?>
+                                                                <div class="badge badge-warning">
+                                                                    <?= $p['status']; ?>
+                                                                </div>
+                                                            <?php else : ?>
+                                                                <div class="badge badge-success">
+                                                                    <?= $p['status']; ?>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <td>
+                                                            <a href="<?= base_url('petugas/tanggapan/'); ?><?= $p['id_pengaduan']; ?>" class="btn btn-info"> <i class="fas fa-check"></i> </a>
+                                                        </td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>
