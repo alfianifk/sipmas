@@ -10,6 +10,7 @@
     <div class="row mb-4">
         <div class="col-lg">
             <div class="row mb-4">
+                $this->load->model('Petugas_model');
                 <div class="col">
                     <a href="#" class="btn btn-info float-right">Tambah Data Petugas <i class="fa fa-plus"></i> </a>
                 </div>
@@ -29,7 +30,6 @@
                                     <th>Email</th>
                                     <th>Username</th>
                                     <th>Telepon</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,10 +42,6 @@
                                         <td><?= $k['email']; ?></td>
                                         <td><?= $k['username']; ?></td>
                                         <td><?= $k['telp']; ?></td>
-                                        <td>
-                                            <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
-                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
-                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

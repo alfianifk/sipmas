@@ -58,6 +58,89 @@ class Masyarakat extends CI_Controller
         }
     }
 
+    public function updateProfile()
+    {
+        if ($this->session->userdata('role') != 'masyarakat') {
+            $this->load->view('error');
+        }
+
+        $validation = $this->form_validation;
+        $masyarakat = $this->Masyarakat_model;
+
+        //nik
+        $validation->set_rules(
+            'nik',
+            'Nik',
+            'required|trim|numeric|min_length[16]',
+            [
+                'required' => 'NIK tidak boleh kosong!',
+                'numeric' => 'NIK tidak valid!',
+                'min_length' => 'NIK tidak terlalu pendek'
+
+            ]
+        );
+        //nama
+        $validation->set_rules(
+            'nama',
+            'Nama',
+            'required|trim',
+            [
+                'required' => 'Nama tidak boleh kosong!'
+            ]
+        );
+
+        //username
+        $validation->set_rules(
+            'username',
+            'Username',
+            'required|trim',
+            [
+                'required' => 'Username tidak boleh kosong!'
+            ]
+        );
+
+        //email
+        $validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email',
+            [
+                'required' => "Email tidak boleh kosong!",
+                'valid_email' => "Email tidak valid!"
+            ]
+        );
+        //telp
+        $validation->set_rules(
+            'telp',
+            'Telp',
+            'required|trim|numeric',
+            [
+                'required' => "Nomor telepon tidak boleh kosong!",
+                'numeric' => 'Nomor telepon tidak valid!'
+            ]
+        );
+
+        if($validation->run())
+        {
+            $masyarakat->updateProfile();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Profile anda berhasil diubah</div>');
+            redirect('masyarakat/profile');
+        } else {
+
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataMasyarakatRow();
+    
+    
+            $data['title'] = "Pengaduan";
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('masyarakat/update_profile', $data);
+            $this->load->view('_partials/footer');
+        }
+
+    }
+
     public function pengaduan()
     {
         if ($this->session->userdata('role') != 'masyarakat') 

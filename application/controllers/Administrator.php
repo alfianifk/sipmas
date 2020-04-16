@@ -270,5 +270,5 @@ class Administrator extends CI_Controller
             $this->load->view('_partials/footer');
         } 
     }
-    
+
 }

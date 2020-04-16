@@ -21,7 +21,6 @@
                                     <th>No</th>
                                     <th>Nama Petugas</th>
                                     <th>Kategori</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,10 +30,6 @@
                                         <td><?= $no++; ?></td>
                                         <td><?= $k['nama_petugas']; ?></td>
                                         <td><?= $k['kategori']; ?></td>
-                                        <td>
-                                            <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
-                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
-                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

@@ -36,6 +36,21 @@ class Masyarakat_model extends CI_Model {
         return $this->db->insert($this->_table, $data, $user);
     }
 
+    public function updateProfile()
+    {
+        $data = array(
+            'nik' => htmlspecialchars($this->input->post('nik', true)),
+            'username' => htmlspecialchars($this->input->post('username', true)), 
+            'nama' => htmlspecialchars($this->input->post('nama', true)),
+            'telp' => htmlspecialchars($this->input->post('telp', true)),
+            'image' => 'avatar.png',
+            'email' => htmlspecialchars($this->input->post('email', true)),
+        );
+
+        $this->db->where('nik', $this->input->post('nik'));
+        $this->db->update($this->_table, $data);
+    }
+
     public function kategori()
     {
         //untuk form

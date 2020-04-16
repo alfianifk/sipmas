@@ -37,7 +37,7 @@
                                         <td><?= $m['telp']; ?></td>
                                         <td>
                                             <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
-                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
+                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-search"></i> </a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
