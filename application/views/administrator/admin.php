@@ -11,7 +11,7 @@
         <div class="col-lg">
             <div class="row mb-4">
                 <div class="col">
-                    <a href="#" class="btn btn-info">Daftarkan Admin Baru <i class="fa fa-plus"></i> </a>
+                    <a href="<?= base_url('administrator/addAdmin'); ?>" class="btn btn-info">Daftarkan Admin Baru <i class="fa fa-plus"></i> </a>
                 </div>
             </div>
             <div class="card shadow">

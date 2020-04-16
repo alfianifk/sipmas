@@ -223,7 +223,42 @@ class Administrator extends CI_Controller
                 'valid_email' => "Email tidak valid!",
                 'is_unique' => "Email sudah terdaftar, silahkan login!"
             ]);
-            
+
+        //password1
+        $validation->set_rules(
+            'password1',
+            'Password',
+            'required|trim|matches[password2]|min_length[4]',
+            [
+                'required' => "Password tidak boleh kosong!",
+                'matches' => "Password tidak sama!",
+                'min_length' => "Password terlalu pendek!"
+            ]
+        );
+        //password2
+        $validation->set_rules(
+            'password2',
+            'Password',
+            'matches[password1]'
+        );
+        //telp
+        $validation->set_rules(
+            'telp',
+            'Telp',
+            'required|trim|numeric',
+            [
+                'required' => "Nomor telepon tidak boleh kosong!",
+                'numeric' => 'Nomor telepon tidak valid!'
+            ]
+        );
+
+        if($validation->run())
+        {
+            $admin->addAdmin();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun sudah terdaftar, silahkan Login!</div>');
+            redirect('administrator/addAdmin');
+        } else {
+
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataAdmin();
 
@@ -233,6 +268,7 @@ class Administrator extends CI_Controller
             $this->load->view('_partials/topbar', $data);
             $this->load->view('administrator/add_admin', $data);
             $this->load->view('_partials/footer');
+        } 
     }
     
 }

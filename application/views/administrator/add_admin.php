@@ -1,8 +1,15 @@
 <div class="container-fluid">
+    <div class="text-dark m-2"><?= date('l, d M Y'); ?></div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <a class="breadcrumb-item text-info" href="<?= base_url('administrator'); ?>">Dashboard</a>
+            <li class="breadcrumb-item active">Daftarkan Admin Baru</li>
+        </ol>
+    </nav>
 
-    <div class="row">
-            <div class="col-lg-5 pt-0">
-                <div class="card o-hidden shadow-lg my-5">
+    <div class="row mt-3">
+            <div class="col-lg-6 pt-0">
+                <div class="card o-hidden shadow-lg">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
@@ -13,6 +20,7 @@
                                         <hr class="garis">
                                     </div>
                                     <div class="text-center">
+                                        <?= $this->session->flashdata('message'); ?>
                                     </div>
                                     <form class="user" method="post" action="">
                                         <div class="form-group">
