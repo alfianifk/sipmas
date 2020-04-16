@@ -8,7 +8,7 @@
     </nav>
 
     <div class="row mb-4">
-        <div class="col-lg-7">
+        <div class="col-lg">
             <div class="row mb-4">
                 <div class="col">
                     <a href="#" class="btn btn-info">Daftarkan Admin Baru <i class="fa fa-plus"></i> </a>
@@ -27,6 +27,7 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Username</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,14 +38,18 @@
                                         <td><?= $a["nama_admin"]; ?></td>
                                         <td><?= $a["email"]; ?></td>
                                         <td><?= $a["username"]; ?></td>
-                                    </div>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                                </table>
-                                </div>
-                            </div>
-                        </div>
+                                        <td>
+                                            <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
+                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
+                                        </td>
                     </div>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+                </table>
                 </div>
-                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -59,6 +59,20 @@
                         </div>
                     </div>
 
+
+                    <!-- WARNING -->
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="card-header h4 text-danger">
+                                    <i class="fa">WARNING :</i>
+                                </div>
+                                <div class="card-body">
+                                    <p>Pengaduan tidak dapat diedit atau dihapus! Untuk itu pastikan anda memenuhi peraturan yang ada dan tidak boleh main-main! </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- MY PENGADUAN -->
                     <div class="row mt-3">
                         <div class="col">
@@ -76,7 +90,6 @@
                                                     <th>Judul</th>
                                                     <th>Isi</th>
                                                     <th>Status</th>
-                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -102,9 +115,6 @@
                                                                     <?= $p['status']; ?>
                                                                 </div>
                                                             <?php endif; ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
                                                         </td>
                                                 </tr>
                                             <?php endforeach; ?>

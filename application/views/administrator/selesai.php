@@ -47,7 +47,7 @@
                                                     <?= $s['status']; ?>
                                                 </div>
                                             <?php elseif ($s['status'] == "proses") : ?>
-                                                <div class="badge badge-info">
+                                                <div class="badge badge-warning">
                                                     <?= $s['status']; ?>
                                                 </div>
                                             <?php else : ?>

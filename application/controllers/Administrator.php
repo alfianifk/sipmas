@@ -15,6 +15,7 @@ class Administrator extends CI_Controller
     parent::__construct();
     $this->load->model('Users_model');
     $this->load->model('Pengaduan_model');
+    $this->load->model('Admin_model');
     
    }
     public function index()
@@ -191,6 +192,47 @@ class Administrator extends CI_Controller
             $this->load->view('administrator/pengaduan', $data);
             $this->load->view('_partials/footer');
         }
+    }
+
+    public function addAdmin()
+    {
+        if ($this->session->userdata('role') != 'admin') {
+            $this->load->view('error');
+        }
+        
+            $validation = $this->form_validation;
+            $admin = $this->Admin_model;
+
+            //nama
+            $validation->set_rules(
+                'nama',
+                'Nama',
+                'required|trim',
+                [
+                    'required' => 'Nama tidak boleh kosong'
+                ]
+            );
+
+            //email
+            $validation->set_rules(
+            'email',
+            'Email',
+            'required|trim|valid_email|is_unique[users.email]',
+            [
+                'required' => "Email tidak boleh kosong!",
+                'valid_email' => "Email tidak valid!",
+                'is_unique' => "Email sudah terdaftar, silahkan login!"
+            ]);
+            
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataAdmin();
+
+            $data['title'] = "Daftarkan Admin Baru";
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('administrator/add_admin', $data);
+            $this->load->view('_partials/footer');
     }
     
 }

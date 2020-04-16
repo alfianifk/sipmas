@@ -7,7 +7,21 @@
         </ol>
     </nav>
 
-    <div class="row">
+    <!-- WARNING -->
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header h4 text-danger">
+                    <i class="fa">WARNING :</i>
+                </div>
+                <div class="card-body">
+                    <h6> <b> Tolong cek ikon lonceng <i class="text-danger fas fa-fw fa-bell"></i> untuk membaca peraturan yang berlaku. </b> </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
         <div class="col-lg">
             <?= $this->session->flashdata('sukses'); ?>
             <div class="card">
@@ -69,6 +83,7 @@
                         <li class="list-group-item">Curhat boleh asal masuk akal</li>
                         <li class="list-group-item">Wajib menyertakan alamat lengkap</li>
                         <li class="list-group-item">SARA / BADWORD / HOAX akan langsung di banned oleh petugas.</li>
+                        <li class="list-group-item">Pengaduan tidak dapat diedit apalagi dihapus, ketika mengklik tombol "Laporkan pengaduan" pastikan anda memenuhi peraturan yang ada dan tidak boleh main-main!</li>
                     </ul>
                 </div>
                 <div class="modal-footer">

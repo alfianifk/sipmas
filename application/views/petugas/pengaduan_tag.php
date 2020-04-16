@@ -19,7 +19,6 @@
                         <table class="table p-4" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Nomor</th>
                                     <th>NIK</th>
                                     <th>Nama</th>
                                     <th>Tanggal</th>
@@ -27,15 +26,11 @@
                                     <th>Judul</th>
                                     <th>Isi</th>
                                     <th>Status</th>
-                                    <th>Aksi</th>
-
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <?php $no = 1; ?>
                                     <?php foreach ($join as $p) : ?>
-                                        <td><?= $no++; ?></td>
                                         <td><?= $p['nik']; ?></td>
                                         <td><?= $p['nama']; ?></td>
                                         <td><?php $waktu = $p['tgl_pengaduan']; ?>
@@ -49,8 +44,8 @@
                                                 <div class="badge badge-danger">
                                                     <?= $p['status']; ?>
                                                 </div>
-                                            <?php elseif ($p['status'] == "ps") : ?>
-                                                <div class="badge badge-info">
+                                            <?php elseif ($p['status'] == "proses") : ?>
+                                                <div class="badge badge-warning">
                                                     <?= $p['status']; ?>
                                                 </div>
                                             <?php else : ?>
@@ -59,18 +54,7 @@
                                                 </div>
                                             <?php endif; ?>
                                         </td>
-                                        <td>
-                                            <div class="dropdown show">
-                                                <a class="badge badge-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"> Aksi
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item text-dark " href="#"> <i class="fas fa-user"></i> Detail</a>
-                                                    <a class="dropdown-item text-danger" href="#"> <i class="fas fa-trash"></i> Hapus</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                </tr>
+                                    </tr>
                             </tbody>
                         <?php endforeach; ?>
                         </table>

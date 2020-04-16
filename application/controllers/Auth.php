@@ -81,7 +81,6 @@ class Auth extends CI_Controller
             'required|trim|valid_email|is_unique[users.email]',
             [
                 'required' => "Email tidak boleh kosong!",
-                'min_length' => "Email terlalu pendek!",
                 'valid_email' => "Email tidak valid!",
                 'is_unique' => "Email sudah terdaftar, silahkan login!"
             ]);
