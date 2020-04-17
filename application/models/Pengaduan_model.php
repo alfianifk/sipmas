@@ -216,4 +216,5 @@ class Pengaduan_model extends CI_Model {
         $this->db->where('id_pengaduan', $id_pengaduan);
         return $this->db->get()->row_array();
     }
+
 }

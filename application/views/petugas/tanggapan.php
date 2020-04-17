@@ -9,7 +9,6 @@
 
     <div class="row">
         <div class="col-6">
-            <?php $this->session->flashdata('sukses'); ?>
             <?= $this->session->flashdata('sukses'); ?>
             <div class="card">
                 <h5 class="card-header text-center">Tanggapi Pengaduan

@@ -55,7 +55,11 @@
                     <!-- PROSES  -->
                     <div class="row mt-3">
                         <div class="col">
+
+                            <?= $this->session->flashdata('sukses'); ?>
                             <div class="card shadow">
+                                <div class="m-3">
+                                </div>
                                 <div class="card-header text-center bg-white text-danger text-center h4">
                                     <i class="fas fa-exclamation-circle"> Peringatan</i>
                                 </div>

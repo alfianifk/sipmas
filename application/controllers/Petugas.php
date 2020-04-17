@@ -148,8 +148,8 @@ class Petugas extends CI_Controller
         if ($validation->run()) {
             if ($this->db->error($id_pengaduan))
             {
-                $this->session->set_flashdata('sukses', '<div class="alert alert-danger" role="alert">Pengaduan ini telah ditanggapi silahkan setujui ke menu <b>Proses Pengaduan</b></div>');
-                redirect('petugas/tanggapan/'.$this->Pengaduan_model->get_pengaduan($id_pengaduan), 'auto');
+                $this->session->set_flashdata('sukses', '<div class="alert alert-danger" role="alert">Pengaduan tersebut telah ditanggapi silahkan setujui ke menu <b>Setujui Pengaduan</b></div>');
+                redirect('petugas/', 'auto');
             }
             $this->Tanggapan_model->addTanggapan();
             $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Pengaduan anda telah terkirim, mohon tunggu tanggapan petugas!</div>');
@@ -222,6 +222,23 @@ class Petugas extends CI_Controller
             $this->load->view('_partials/sidebar', $data);
             $this->load->view('_partials/topbar', $data);
             $this->load->view('petugas/view_profile', $data);
+            $this->load->view('_partials/footer');
+        }
+    }
+
+    public function accPengaduan()
+    {
+        if ($this->session->userdata('role') != 'petugas') {
+            $this->load->view('error');
+        } else {
+            $data['users'] = $this->Users_model->dataUsers();
+            $data['user'] = $this->Users_model->dataPetugasRow();
+
+            $data['title'] = "Data Masyarakat";
+            $this->load->view('_partials/head', $data);
+            $this->load->view('_partials/sidebar', $data);
+            $this->load->view('_partials/topbar', $data);
+            $this->load->view('petugas/acc_pengaduan', $data);
             $this->load->view('_partials/footer');
         }
     }
