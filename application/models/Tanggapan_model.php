@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Tanggapan_model extends CI_Model {
     private $_tabel = "tanggapan";
 
-    public function addTanggapan ()
+    public function addTanggapan()
     {
         $user = $this->petugas();
         $pengaduan = $this->pengaduan();

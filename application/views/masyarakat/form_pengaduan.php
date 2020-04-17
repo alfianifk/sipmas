@@ -55,7 +55,7 @@
                         </div>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="gambar" name="gambar">
+                                <input type="file" required class="custom-file-input" id="gambar" name="gambar">
                                 <label class="custom-file-label" for="gambar">Choose file</label>
                             </div>
                         </div>

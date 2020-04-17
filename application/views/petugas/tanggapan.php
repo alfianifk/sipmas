@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <a href="<?= base_url('petugas/view/'); ?><?= $get_pengaduan['nik'];?>" class="btn btn-dark">Lihat profile</a>
+                    <a href="<?= base_url('petugas/view/'); ?><?= $get_pengaduan['nik']; ?>" class="btn btn-dark">Lihat profile</a>
                 </div>
             </div>
         </div>
