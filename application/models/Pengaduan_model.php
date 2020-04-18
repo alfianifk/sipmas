@@ -128,6 +128,22 @@ class Pengaduan_model extends CI_Model {
         // $this->db->like('nik', $user['nik']);
         // return $this->db->get()->result_array();
     }
+
+    public function pengaduanSelesai() //Untuk Tanggapan
+    {
+        //cari dan join tanggapan + pengaduan
+        $warga = $this->warga();
+        $nik = $warga['nik'];
+
+        $query = "SELECT * 
+                FROM `pengaduan` JOIN `kategori` 
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                JOIN `tanggapan` ON `pengaduan`.`id_pengaduan` = `tanggapan`.`id_pengaduan`
+                WHERE `status` LIKE 's%' AND `nik` = $nik;
+                ";
+        return $this->db->query($query)->result_array();
+    }
+    
     public function viewPengaduanAll() //for admin
     {
         $this->db->select('*');

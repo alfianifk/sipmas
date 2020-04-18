@@ -125,6 +125,43 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card shadow mt-3">
+                        <div class="card-header h4 text-dark text-center">
+                            <i class="fa">Pengaduan yang sudah di Tanggapi</i>
+                        </div>
+                    </div>
+                    <div class="card-group">
+                        <?php foreach ($setujui as $s) : ?>
+                            <div class="card">
+                                <div class="card-header h4 text-dark text-center">
+                                    <div class="h5"><?= $s['kategori']; ?></div>
+                                </div>
+                                <img src="<?= base_url('assets/img/pengaduan/') . $s['foto']; ?>" class="card-img-top" style="max-width: 200px">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $s['judul_pengaduan']; ?></h5>
+                                    <p class="card-text"><b><?= $s['nama']; ?></b> <br>
+                                        Status : <?= $s['status']; ?>
+                                    </p>
+                                    <p class="card-text"><?= $s['isi_pengaduan']; ?></p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card bg-dark">
+                                                <p class="card-body text-white">
+                                                    <?= $s['tanggapan']; ?>
+                                                </p>
+                                                <div class="card-footer">
+                                                    <small class="text-muted">Tanggapan ini oleh petugas <?= $s['kategori']; ?></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">Pengaduan ini di post oleh <b> <?= $s['nama']; ?> </b> pada tanggal <?= date("d M Y", $s['tgl_pengaduan']); ?></small>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <!-- /.container-fluid -->
 

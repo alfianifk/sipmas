@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 m-auto">
-                            <a href="<?= base_url('petugas/setujui/') . $s['id_pengaduan']; ?>" class="btn btn-primary"> <i class="fas fa-check-double"></i> Setujui</a>
+                            <a href="<?= base_url('petugas/setujui/') . $s['id_pengaduan']; ?>" onclick="return confirm('Apakah anda yakin ingin menyetujui pengaduan ini?');" class="btn btn-primary"> <i class="fas fa-check-double"></i> Setujui</a>
                         </div>
                     </div>
                 </div>

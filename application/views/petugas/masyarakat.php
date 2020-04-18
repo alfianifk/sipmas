@@ -24,7 +24,6 @@
                                     <th>Email</th>
                                     <th>Username</th>
                                     <th>Telepon</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,9 +36,6 @@
                                         <td><?= $m['email']; ?></td>
                                         <td><?= $m['username']; ?></td>
                                         <td><?= $m['telp']; ?></td>
-                                        <td>
-                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
-                                        </td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

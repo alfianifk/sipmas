@@ -29,6 +29,8 @@ class Masyarakat extends CI_Controller
             $data['proses'] = $this->Pengaduan_model->prosesPengaduan();
             $data['selesai'] = $this->Pengaduan_model->selesaiPengaduan();
             $data['pengaduan'] = $this->Pengaduan_model->viewPengaduan();
+            $data['setujui'] = $this->Pengaduan_model->pengaduanSelesai();
+            $data['petugas'] = $this->Users_model->dataPetugasRow();
 
 
             $data['title'] = "Pengaduan";
