@@ -16,9 +16,9 @@ class Tanggapan_model extends CI_Model {
         $user = $this->petugas();
         $pengaduan = $this->pengaduan();
         $data = [
-            "id_petugas" => $user['id_petugas'],
-            "id_pengaduan" => $pengaduan['id_pengaduan'],
-            "tanggapan" => $this->input->post('tanggapan'),
+            'id_petugas' => $user['id_petugas'],
+            'id_pengaduan' => $pengaduan['id_pengaduan'],
+            'tanggapan' => $this->input->post('tanggapan'),
         ];
 
         return $this->db->insert($this->_tabel, $data, $user, $pengaduan);

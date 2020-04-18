@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <a class="breadcrumb-item text-info" href="<?= base_url('petugas'); ?>">Dashboard</a>
-            <li class="breadcrumb-item active">Selesai </li>
+            <li class="breadcrumb-item active">Proses</li>
         </ol>
     </nav>
 

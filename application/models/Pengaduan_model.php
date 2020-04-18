@@ -86,6 +86,21 @@ class Pengaduan_model extends CI_Model {
 
     }
 
+    public function joinPengaduanProsesSelesai() //Untuk Tanggapan
+    {
+        //cari dan join tanggapan + pengaduan
+        $petugas = $this->kategoriPetugas();
+        $id = $petugas['id_kategori'];
+       
+        $query = "SELECT * 
+                FROM `pengaduan` JOIN `kategori` 
+                ON `pengaduan`.`id_kategori` = `kategori`.`id_kategori`
+                JOIN `tanggapan` ON `pengaduan`.`id_pengaduan` = `tanggapan`.`id_pengaduan`
+                WHERE `status` LIKE 'p%' AND `kategori`.`id_kategori` = $id;
+                ";
+        return $this->db->query($query)->result_array();
+    }
+
     public function joinKategoriPengaduanSelesai() //join kategori - pengaduan yang statusnya selesai
     {
         $petugas = $this->kategoriPetugas();

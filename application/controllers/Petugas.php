@@ -146,14 +146,17 @@ class Petugas extends CI_Controller
         );
 
         if ($validation->run()) {
-            if ($this->db->error($id_pengaduan))
-            {
+            $query = $this->db->get_where('tanggapan', array('id_pengaduan' => $id_pengaduan));
+
+            if ($query->num_rows() <= 0 )
+            { //cek apakah id pengaduan tersebut udah ada?
+                $this->Tanggapan_model->addTanggapan();
+                $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Pengaduan anda telah terkirim, mohon tunggu tanggapan petugas!</div>');
+                redirect('petugas');             
+            } else {
                 $this->session->set_flashdata('sukses', '<div class="alert alert-danger" role="alert">Pengaduan tersebut telah ditanggapi silahkan setujui ke menu <b>Setujui Pengaduan</b></div>');
                 redirect('petugas/', 'auto');
             }
-            $this->Tanggapan_model->addTanggapan();
-            $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Pengaduan anda telah terkirim, mohon tunggu tanggapan petugas!</div>');
-            redirect('petugas');
         } else {
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataPetugasRow();
@@ -233,12 +236,13 @@ class Petugas extends CI_Controller
         } else {
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataPetugasRow();
+            $data['setujui'] = $this->Pengaduan_model->joinPengaduanProsesSelesai(); //view yang harus disetujui
 
             $data['title'] = "Data Masyarakat";
             $this->load->view('_partials/head', $data);
             $this->load->view('_partials/sidebar', $data);
             $this->load->view('_partials/topbar', $data);
-            $this->load->view('petugas/acc_pengaduan', $data);
+            $this->load->view('petugas/setujui', $data);
             $this->load->view('_partials/footer');
         }
     }
