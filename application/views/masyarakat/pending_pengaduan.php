@@ -3,6 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <a class="breadcrumb-item text-info" href="<?= base_url('masyarakat'); ?>">Dashboard</a>
+            <li class="breadcrumb-item active">Pengaduan-ku</li>
             <li class="breadcrumb-item active">Pending</li>
         </ol>
     </nav>
