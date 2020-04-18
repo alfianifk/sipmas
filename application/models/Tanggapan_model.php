@@ -35,4 +35,15 @@ class Tanggapan_model extends CI_Model {
     {
         return $this->db->get_where('pengaduan', ['id_pengaduan' => $this->session->userdata('id_pengaduan')])->row_array();
     }
+
+    public function setujui($id_pengaduan)
+    {
+        $data = array(
+            'proses' => 1,
+            'update_at' => time()
+        );
+
+        $this->db->where('id_pengaduan', $id_pengaduan);
+        $this->db->update($this->_tabel, $data);
+    }
 }

@@ -155,14 +155,13 @@ class Petugas extends CI_Controller
                 redirect('petugas');             
             } else {
                 $this->session->set_flashdata('sukses', '<div class="alert alert-danger" role="alert">Pengaduan tersebut telah ditanggapi silahkan setujui ke menu <b>Setujui Pengaduan</b></div>');
-                redirect('petugas/', 'auto');
+                redirect('petugas', 'auto');
             }
         } else {
             $data['users'] = $this->Users_model->dataUsers();
             $data['user'] = $this->Users_model->dataPetugasRow();
             $data['get_pengaduan'] = $this->Pengaduan_model->get_pengaduan($id_pengaduan);
             $data['id_pengaduan'] = $data['get_pengaduan']['id_pengaduan'];
-            $this->session->set_userdata($data);
 
             $data['title'] = "Data Masyarakat";
             $data['title'] = "Tanggapan";
@@ -174,42 +173,25 @@ class Petugas extends CI_Controller
         }
     }
 
-    // public function setujui($id_pengaduan)
-    // {
-    //     if ($this->session->userdata('role') != 'petugas') {
-    //         $this->load->view('error');
-    //     }
+    public function setujui($id_pengaduan)
+    {
+        if ($this->session->userdata('role') != 'petugas') {
+            $this->load->view('error');
+        }
 
-    //     $validation = $this->form_validation;
+        // $query = "SELECT * FROM `tanggapan` WHERE `proses` = 0 AND `id_pengaduan` = $id_pengaduan";
 
-    //     $validation->set_rules(
-    //         'tanggapan',
-    //         'Tanggapan',
-    //         'required|trim',
-    //         [
-    //             'required' => "Kolom ini harus diisi"
-    //         ]
-    //     );
-
-    //     if ($validation->run()) {
-    //         $this->Tanggapan_model->setujuiTanggapan();
-    //         $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Terimakasih telah menyetujui pengaduan ini</div>');
-    //         redirect('petugas/setujui');
-    //     } else {
-    //         $data['users'] = $this->Users_model->dataUsers();
-    //         $data['user'] = $this->Users_model->dataPetugasRow();
-    //         $data['get_pengaduan'] = $this->Pengaduan_model->get_pengaduan($id_pengaduan);
-    //         $data['id_pengaduan'] = $data['get_pengaduan']['id_pengaduan'];
-    //         $this->session->set_userdata($data);
-
-    //         $data['title'] = "Setujui Tanggapan";
-    //         $this->load->view('_partials/head', $data);
-    //         $this->load->view('_partials/sidebar', $data);
-    //         $this->load->view('_partials/topbar', $data);
-    //         $this->load->view('petugas/setujui', $data);
-    //         $this->load->view('_partials/footer');
-    //     }
-    // }
+       $query =  $this->db->get_where('tanggapan', array('id_pengaduan' => $id_pengaduan));
+       
+            if ($query) { //cek apakah prosesnya = 0
+                $this->Tanggapan_model->setujui($id_pengaduan);
+                $this->session->set_flashdata('ok', '<div class="alert alert-success" role="alert">Selamat! Pengaduan telah disetujui, terimakasih telah melayani masyarakat dengan baik</div>');
+                redirect('petugas/accPengaduan');
+            } else {
+                $this->session->set_flashdata('ok', '<div class="alert alert-danger" role="alert">Pengaduan ini telah <b> selesai </b> disetujui </div>');
+                redirect('petugas/accPengaduan');
+            }
+    }
 
     public function view($nik)
     {
@@ -238,7 +220,7 @@ class Petugas extends CI_Controller
             $data['user'] = $this->Users_model->dataPetugasRow();
             $data['setujui'] = $this->Pengaduan_model->joinPengaduanProsesSelesai(); //view yang harus disetujui
 
-            $data['title'] = "Data Masyarakat";
+            $data['title'] = "Daftar Pengaduan";
             $this->load->view('_partials/head', $data);
             $this->load->view('_partials/sidebar', $data);
             $this->load->view('_partials/topbar', $data);
