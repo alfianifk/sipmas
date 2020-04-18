@@ -3,18 +3,13 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <a class="breadcrumb-item text-info" href="<?= base_url('administrator'); ?>">Dashboard</a>
+            <li class="breadcrumb-item active">Data Users</li>
             <li class="breadcrumb-item active">Petugas</li>
         </ol>
     </nav>
 
     <div class="row mb-4">
         <div class="col-lg">
-            <div class="row mb-4">
-                $this->load->model('Petugas_model');
-                <div class="col">
-                    <a href="#" class="btn btn-info float-right">Tambah Data Petugas <i class="fa fa-plus"></i> </a>
-                </div>
-            </div>
             <div class="card shadow">
                 <div class="card-header h4 text-dark text-center">
                     <i class="fa">Petugas</i>

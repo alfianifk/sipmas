@@ -59,8 +59,9 @@
                                             <?php endif; ?>
                                         </td>
                                 </tr>
+                            <?php endforeach; ?>
                             </tbody>
-                        <?php endforeach; ?>
+
                         </table>
                     </div>
                 </div>

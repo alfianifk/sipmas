@@ -3,6 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <a class="breadcrumb-item text-info" href="<?= base_url('administrator'); ?>">Dashboard</a>
+            <li class="breadcrumb-item active">Pengaduaan</li>
             <li class="breadcrumb-item active">Proses</li>
         </ol>
     </nav>

@@ -3,6 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <a class="breadcrumb-item text-info" href="<?= base_url('administrator'); ?>">Dashboard</a>
+            <li class="breadcrumb-item active">Data Users</li>
             <li class="breadcrumb-item active">Masyarakat</li>
         </ol>
     </nav>

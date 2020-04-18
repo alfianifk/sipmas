@@ -3,6 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb mb-4">
             <a class="breadcrumb-item text-info" href="<?= base_url('administrator'); ?>">Dashboard</a>
+            <li class="breadcrumb-item active">Data Users</li>
             <li class="breadcrumb-item active">Admin</li>
         </ol>
     </nav>
@@ -27,7 +28,6 @@
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Username</th>
-                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,10 +38,6 @@
                                         <td><?= $a["nama_admin"]; ?></td>
                                         <td><?= $a["email"]; ?></td>
                                         <td><?= $a["username"]; ?></td>
-                                        <td>
-                                            <a href="http://" class="btn btn-xl btn-danger"> <i class="fas fa-trash"></i> </a>
-                                            <a href="http://" class="btn btn-xl btn-info"> <i class="fas fa-edit"></i> </a>
-                                        </td>
                     </div>
                     </tr>
                 <?php endforeach; ?>

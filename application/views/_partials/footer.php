@@ -64,8 +64,8 @@
 <script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
 
 <!-- include datatables -->
-<script type="text/javascript" src="<?= base_url('assets/'); ?>datatables/datatables.min.js"></script>
 
+<script type="text/javascript" src="<?= base_url('assets/'); ?>datatables/datatables.min.js"></script>
 
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">

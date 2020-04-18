@@ -162,6 +162,7 @@ class Petugas extends CI_Controller
             $data['user'] = $this->Users_model->dataPetugasRow();
             $data['get_pengaduan'] = $this->Pengaduan_model->get_pengaduan($id_pengaduan);
             $data['id_pengaduan'] = $data['get_pengaduan']['id_pengaduan'];
+            $this->session->set_userdata($data);
 
             $data['title'] = "Data Masyarakat";
             $data['title'] = "Tanggapan";
@@ -186,6 +187,7 @@ class Petugas extends CI_Controller
             if ($query) { //cek apakah prosesnya = 0
                 $this->Tanggapan_model->setujui($id_pengaduan);
                 $this->session->set_flashdata('ok', '<div class="alert alert-success" role="alert">Selamat! Pengaduan telah disetujui, terimakasih telah melayani masyarakat dengan baik</div>');
+            
                 redirect('petugas/accPengaduan');
             } else {
                 $this->session->set_flashdata('ok', '<div class="alert alert-danger" role="alert">Pengaduan ini telah <b> selesai </b> disetujui </div>');
