@@ -85,51 +85,6 @@
             </div>
 
             <div class="row justify-content-center">
-                <div class="col-4 md-auto text-center">
-                    <div class="card mb-3">
-                        <div class="row no-gutters">
-                            <div class="col-md-7">
-                                <img src="<?= base_url('assets/img/kategori/kesehatan.svg'); ?>" class="card-img rounded">
-                            </div>
-                            <div class="col-md-5">
-                                <div class="card-body">
-                                    <p class="card-title judul">Kesehatan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4 md-auto text-center">
-                    <div class="card mb-3" style="max-width: 500px;">
-                        <div class="row no-gutters">
-                            <div class="col-md-7">
-                                <img src="<?= base_url('assets/img/kategori/keamanan.svg'); ?>" class="card-img rounded">
-                            </div>
-                            <div class="col-md-5">
-                                <div class="card-body">
-                                    <p class="card-title judul">Keamanan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4 md-auto text-center">
-                    <div class="card mb-3" style="max-width: 500px;">
-                        <div class="row no-gutters">
-                            <div class="col-md-7">
-                                <img src="<?= base_url('assets/img/kategori/pendidikan.svg'); ?>" class="card-img rounded">
-                            </div>
-                            <div class="col-md-5">
-                                <div class="card-body">
-                                    <p class="card-title judul">Pendidikan</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
                 <div class="col md-auto text-center">
                     <div class="card mb-3">
                         <div class="row no-gutters">
@@ -153,6 +108,54 @@
                             <div class="col-md-5">
                                 <div class="card-body">
                                     <p class="card-title judul">Infrastruktur</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <img src="<?= base_url('assets/img/kategori/kesehatan.svg'); ?>" class="card-img rounded">
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    <p class="card-title judul">Kesehatan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col md-auto text-center">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <img src="<?= base_url('assets/img/kategori/keamanan.svg'); ?>" class="card-img rounded">
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    <p class="card-title judul">Keamanan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col md-auto text-center">
+                    <div class="card mb-3" style="max-width: 500px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <img src="<?= base_url('assets/img/kategori/pendidikan.svg'); ?>" class="card-img rounded">
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body">
+                                    <p class="card-title judul">Pendidikan</p>
                                 </div>
                             </div>
                         </div>
