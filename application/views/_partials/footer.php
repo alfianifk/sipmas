@@ -111,6 +111,12 @@
     });
 </script>
 
+<script>
+    $(window).on('load', function() {
+        $("#disclaimer").modal('show');
+    });
+</script>
+
 </body>
 
 </html>

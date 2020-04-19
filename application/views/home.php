@@ -47,7 +47,7 @@
             <div class="col-md-6 mb-5">
                 <h2 class="judul">Selamat datang! <i class="far fa-smile-beam"></i> </h2>
                 <h3 class="sub-judul">Masyarakat Kecamatan Cikalong</h3>
-                <h6 class="sub-judul">Adukan semua keluhan Anda disini, hal apapun akan kami tanggapi <b>kecuali</b> tentang keluhan <b>kejombloan:v</b></h6>
+                <h6 class="sub-judul">Adukan semua keluhan Anda disini, hal apapun akan kami tanggapi dengan baik</h6>
                 <a href="<?= base_url('auth/registrasi'); ?>" class="btn btn-dark sub-judul mt-5">Mulai Mendaftar</a>
                 <a href="<?= base_url('auth'); ?>" class="btn btn-info sub-judul ml-2 mt-5">Mulai Mengadu</a>
             </div>

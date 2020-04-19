@@ -151,7 +151,7 @@ class Petugas extends CI_Controller
             if ($query->num_rows() <= 0 )
             { //cek apakah id pengaduan tersebut udah ada?
                 $this->Tanggapan_model->addTanggapan();
-                $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Pengaduan anda telah terkirim, mohon tunggu tanggapan petugas!</div>');
+                $this->session->set_flashdata('sukses', '<div class="alert alert-success" role="alert">Terimakasih telah menanggapi keluhan masyarakat.</div>');
                 redirect('petugas');             
             } else {
                 $this->session->set_flashdata('sukses', '<div class="alert alert-danger" role="alert">Pengaduan tersebut telah ditanggapi silahkan setujui ke menu <b>Setujui Pengaduan</b></div>');

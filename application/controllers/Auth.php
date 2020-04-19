@@ -59,11 +59,12 @@ class Auth extends CI_Controller
         $validation->set_rules(
             'nik',
             'Nik',
-            'required|trim|numeric|min_length[16]',
+            'required|trim|numeric|min_length[16]|is_unique[warga.nik]',
             [
                 'required' => 'NIK tidak boleh kosong!',
                 'numeric' => 'NIK tidak valid!',
-                'min_length' => 'NIK tidak terlalu pendek'
+                'min_length' => 'NIK tidak terlalu pendek',
+                'is_unique' => 'NIK tidak ada yang sama'
 
             ]);
         //nama

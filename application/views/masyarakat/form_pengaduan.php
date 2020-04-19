@@ -78,12 +78,12 @@
                 </div>
                 <div class="modal-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Tidak boleh berkata kasar!</li>
-                        <li class="list-group-item">Masalah yang dilaporkan hanya sesuai dengan kategori</li>
-                        <li class="list-group-item">Curhat boleh asal masuk akal</li>
-                        <li class="list-group-item">Wajib menyertakan alamat lengkap</li>
-                        <li class="list-group-item">SARA / BADWORD / HOAX akan langsung di banned oleh petugas.</li>
-                        <li class="list-group-item">Pengaduan tidak dapat diedit apalagi dihapus, ketika mengklik tombol "Laporkan pengaduan" pastikan anda memenuhi peraturan yang ada dan tidak boleh main-main!</li>
+                        <li class="list-group-item">Dilarang menggunakan kata kasar.</li>
+                        <li class="list-group-item">Laporan harus sesuai kategori.</li>
+                        <li class="list-group-item">Wajib menggunakan alamat lengkap sesuai domisili.</li>
+                        <li class="list-group-item">Tidak mengandung SARA, BADWORD, HOAX, dan PORNOGRAFI</li>
+                        <li class="list-group-item">Pengaduan yang sudah dikirim tidak dapat diurungkan</li>
+                        <li class="list-group-item">Pastikan anda mematuhi aturan yang ada.</li>
                     </ul>
                 </div>
                 <div class="modal-footer">
