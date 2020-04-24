@@ -130,8 +130,9 @@
                             <i class="fa">Pengaduan yang sudah di Tanggapi</i>
                         </div>
                     </div>
-                    <div class="card-group">
-                        <?php foreach ($setujui as $s) : ?>
+
+                    <?php foreach ($setujui as $s) : ?>
+                        <div class="card-group">
                             <div class="card">
                                 <div class="card-header h4 text-dark text-center">
                                     <div class="h5"><?= $s['kategori']; ?></div>
@@ -161,7 +162,7 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                    </div>
+                        </div>
                 </div>
                 <!-- /.container-fluid -->
 
