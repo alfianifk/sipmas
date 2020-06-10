@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 29, 2020 at 03:50 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Waktu pembuatan: 27 Apr 2020 pada 02.54
+-- Versi server: 10.4.8-MariaDB
+-- Versi PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -34,19 +34,20 @@ CREATE TABLE `admin` (
   `email` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `image` varchar(200) NOT NULL DEFAULT 'avatar.jpg',
-  `telp` int(11) NOT NULL
+  `image` varchar(200) NOT NULL DEFAULT 'avatar.png',
+  `telp` varchar(123) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `username`, `password`, `image`, `telp`) VALUES
-(4, 'Alfiani Fitria K', 'admin@sipmas.com', 'admin1', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', 'avatar.png', 852237771);
+(7, 'Alfiani Fitria K', 'admin1@gmail.com', 'admin1', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'avatar.png', '8522377'),
+(12, 'Anisa', 'admin2@gmail.com', 'admin2', '$2y$10$wSkb7ibrcYQO0yLgUm0pw.ecquGVzN8yLnz.1LLX9VPEb/4qGw2f6', 'avatar.png', '085231787052');
 
 --
--- Triggers `admin`
+-- Trigger `admin`
 --
 DELIMITER $$
 CREATE TRIGGER `delete_admin` AFTER DELETE ON `admin` FOR EACH ROW DELETE FROM users WHERE
@@ -58,6 +59,7 @@ CREATE TRIGGER `insert_admin` AFTER INSERT ON `admin` FOR EACH ROW INSERT INTO
 users
 SET
 email = new.email,
+nama = new.nama_admin,
 username = new.username,
 password = new.password,
 role = 1
@@ -67,7 +69,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kategori`
+-- Struktur dari tabel `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -77,7 +79,7 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `kategori`
+-- Dumping data untuk tabel `kategori`
 --
 
 INSERT INTO `kategori` (`id_kategori`, `kategori`, `id_petugas`) VALUES
@@ -90,7 +92,7 @@ INSERT INTO `kategori` (`id_kategori`, `kategori`, `id_petugas`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengaduan`
+-- Struktur dari tabel `pengaduan`
 --
 
 CREATE TABLE `pengaduan` (
@@ -100,22 +102,27 @@ CREATE TABLE `pengaduan` (
   `id_kategori` int(200) NOT NULL,
   `nama` varchar(200) NOT NULL,
   `judul_pengaduan` varchar(200) NOT NULL,
-  `isi_pengaduan` text NOT NULL,
+  `isi_pengaduan` longtext NOT NULL,
   `foto` varchar(255) NOT NULL,
   `status` enum('pending','proses','selesai') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `pengaduan`
+-- Dumping data untuk tabel `pengaduan`
 --
 
 INSERT INTO `pengaduan` (`id_pengaduan`, `tgl_pengaduan`, `nik`, `id_kategori`, `nama`, `judul_pengaduan`, `isi_pengaduan`, `foto`, `status`) VALUES
-(52, 1584516422, '1263748192716257', 2, 'Masyarakat1', 'Jalan Rusak', 'Halo pak, disini jalan rusak dan saya butuh dana untuk memperbaikinya.', '5e71cd461d149.png', 'selesai'),
-(53, 1584557983, '1263748192716257', 4, 'Masyarakat1', 'Corona Meluas', 'Halo disini ada seseorang yang pilek, sepertinya masuk angin', '5e726f9f18903.png', 'proses'),
-(54, 1584791591, '1263748192716257', 5, 'Masyarakat1', 'Kehilangan Kucing', 'Pak, tolong saya kehilangan kucing yang sangat lucu macam saya :(', '5e760027ab2cb.png', 'pending');
+(66, 1587112278, '2343234512324345', 5, 'Alfan Fabian', 'Hilang kucing', 'Pak aku kehilangan kucing anggora yang berwarna biru', '5e99695652c86.png', 'selesai'),
+(67, 1587113250, '1263748192717257', 5, 'Muhammad Ilham Firmansyah', 'Saya mau WIFI gratis', 'Halo pak, kapan ada wifi gratis ditiap penjuru tongkrongan', '5e996d227e6c9.png', 'selesai'),
+(68, 1587189292, '1263748192717257', 1, 'Muhammad Ilham Firmansyah', 'Terjadi pencurian', 'Terjadi pencurian ayam pak&nbsp;', '5e9a962c49edc.png', 'selesai'),
+(69, 1587196071, '1263748192717257', 3, 'Muhammad Ilham Firmansyah', 'Pendidikan Mobile Legends', 'Pak saya mau adain sekola mobile legends dongss , bapa baik dech', '5e9ab0a751fb5.jpg', 'selesai'),
+(70, 1587210405, '1263748192716257', 4, 'Alfan Fabian', 'Corona', 'Halo pak, disini ada orang yang dari zona merah', '5e9ae8a569aec.png', 'selesai'),
+(71, 1587228333, '1263748192717257', 4, 'Muhammad Ilham Firmansyah', 'Corona', '<i>Assalamu\'alaikum</i> pak, didaerah saya yang berada di <b>Jl. Raya Cikalong Desa Singkir RT/RW 001/003</b> ada seorang perantar dari zona merah. Saya harap bapa segera menindak lanjuti, atau memberi anjuran untuk tetap berada dirumah selama 14 hari. Terimakasih <i>Wassalamu\'alaikum</i>.', '5e9b2ead8fd9b.JPG', 'selesai'),
+(72, 1587229751, '1263748192717257', 5, 'Muhammad Ilham Firmansyah', 'Wifi Gratis', '<i>Assalamu\'alaikum</i> <b>bapak petugas kesejahteraan</b> yang terhormat. Saya sebagai warga kecamatan Cikalong ingin sekali mendapatkan kesejahteraan berpa akses wifi gratis diseluruh penjuru tongkrongan:) . Saya harap bapa dapat merespon dengan baik. Alamat lengkap saya di <font color=\"#104a5a\" style=\"background-color: rgb(239, 239, 239);\">Desa Singkir RT/RW 001/003</font>. Terimakasih sebelumnya pak, sehat selalu. <i>Wassalamu\'alaikum.</i>', '5e9b343769b2e.jpg', 'selesai'),
+(73, 1587230546, '1263748192717257', 2, 'Muhammad Ilham Firmansyah', 'Jalan Rusak', '<i><b>Assalamu\'alaikum</b></i> bapak petugas infrastruktur yang terhormat, saya seorang pelajar yang peduli sekitar. Daerah saya berada di <b style=\"background-color: rgb(239, 239, 239);\">Desa Singkir Kp. Ciheulang RT/RW 001/003</b> memiliki keluhan terkait jalanan yang sudah rusak. Bapa bisa lihat kalau berkujung ke desa kami dekat warung ibu Imin. Sekian keluhan dari saya pak semoga bapa segera menanggapinya. <b><i>Wassalamu\'alaikum</i></b>.', '5e9b3752e835b.jpg', 'selesai');
 
 --
--- Triggers `pengaduan`
+-- Trigger `pengaduan`
 --
 DELIMITER $$
 CREATE TRIGGER `delete_pengaduan` AFTER DELETE ON `pengaduan` FOR EACH ROW DELETE FROM tanggapan WHERE
@@ -126,7 +133,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petugas`
+-- Struktur dari tabel `petugas`
 --
 
 CREATE TABLE `petugas` (
@@ -142,29 +149,25 @@ CREATE TABLE `petugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `petugas`
+-- Dumping data untuk tabel `petugas`
 --
 
 INSERT INTO `petugas` (`id_petugas`, `status_petugas`, `nama_petugas`, `email`, `username`, `password`, `telp`, `image`, `id_kategori`) VALUES
-(1, 'Petugas Keamanan', 'Alfiani Fitria Kusnadi', 'petugas1@gmail.com', 'petugas1', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', '082321543292', 'avatar.png', 1),
-(2, 'Petugas Infrastruktur', 'Alfan Fabian', 'petugas2@gmail.com', 'petugas2', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', '08522377710', 'avatar.png', 2),
-(3, 'Petugas Pendidikan', 'Wini Puspa Rahayu', 'petugas3@gmail.com', 'petugas3', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', '082323236322', 'avatar.png', 3),
-(4, 'Petugas Kesehatan', 'Anisa Rahma', 'petugas4@gmail.com', 'petugas4', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', '08522377710', 'avatar.png', 4),
-(5, 'Petugas Kesejahteraan', 'Listiani', 'petugas5@gmail.com', 'petugas5', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', '082323236322', 'avatar.png', 5);
+(1, 'Petugas Keamanan', 'Nikita Mirzani', 'petugas1@gmail.com', 'petugas1', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', '08522377710', 'avatar.png', 1),
+(2, 'Petugas Infrastruktur', 'Tia WZ', 'petugas2@gmail.com', 'petugas2', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', '08522377710', 'avatar.png', 2),
+(3, 'Petugas Pendidikan', 'Citra Kirana', 'petugas3@gmail.com', 'petugas3', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', '082321543292', 'avatar.png', 3),
+(4, 'Petugas Kesehatan', 'Zia Putri Rahmawati', 'petugas4@gmail.com', 'petugas4', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', '085231787052', 'avatar.png', 4),
+(5, 'Petugas Kesejahteraan', 'Geri Abdul Malik', 'petugas5@gmail.com', 'petugas5', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', '082323236322', 'avatar.png', 5);
 
 --
--- Triggers `petugas`
+-- Trigger `petugas`
 --
 DELIMITER $$
-CREATE TRIGGER `delete_petugas` AFTER DELETE ON `petugas` FOR EACH ROW DELETE FROM users WHERE
-username = old.username
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `insert_petugas` AFTER INSERT ON `petugas` FOR EACH ROW INSERT INTO
+CREATE TRIGGER `insert_petugas` BEFORE INSERT ON `petugas` FOR EACH ROW INSERT INTO
 users
 SET
 email = new.email,
+nama = new.nama_petugas,
 username = new.username,
 password = new.password,
 role = 2
@@ -174,29 +177,35 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tanggapan`
+-- Struktur dari tabel `tanggapan`
 --
 
 CREATE TABLE `tanggapan` (
   `id_tanggapan` int(11) NOT NULL,
   `id_petugas` int(11) NOT NULL,
   `id_pengaduan` int(11) NOT NULL,
-  `tgl_tanggapan` timestamp NOT NULL DEFAULT current_timestamp(),
-  `tanggapan` text NOT NULL,
-  `update_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `tgl_tanggapan` timestamp NULL DEFAULT current_timestamp(),
+  `tanggapan` longtext NOT NULL,
+  `update_at` varchar(200) DEFAULT NULL,
   `proses` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tanggapan`
+-- Dumping data untuk tabel `tanggapan`
 --
 
 INSERT INTO `tanggapan` (`id_tanggapan`, `id_petugas`, `id_pengaduan`, `tgl_tanggapan`, `tanggapan`, `update_at`, `proses`) VALUES
-(17, 2, 52, '2020-03-23 07:35:00', 'ditanggapi', '2020-03-23 07:35:00', 1),
-(18, 4, 53, '2020-03-28 04:33:56', 'Oke bos', '2020-03-28 04:33:56', 0);
+(40, 5, 66, '2020-04-17 08:41:56', 'Mana saia tau saia lagi dikarantika', '2020-04-17 15:41:56', 1),
+(42, 5, 67, '2020-04-17 13:53:30', 'Euuuuuu kapan yaaachhh? W juga pengen', '1587199668', 1),
+(43, 1, 68, '2020-04-18 05:55:30', 'Gue sih owh aja... OOOOOOOOOOOOOOOOOo', '2020-04-18 12:55:30', 1),
+(44, 3, 69, '2020-04-18 07:48:21', 'Oke entar kita buat sama sama yach', '1587204325', 1),
+(53, 4, 70, '2020-04-18 12:26:37', 'Yang itu', '1587213343', 1),
+(54, 5, 72, '2020-04-18 17:11:09', 'Wa\'alaikumsalam, baik pak. Tolong tunggu saja 2 minggu lagi.', '1587230705', 1),
+(55, 2, 73, '2020-04-18 17:23:59', 'Wa\'alaikumsalam, terimakasih atas pengaduan anda. Kami akan segera bertindak. Tunggu sekitar 2 minggu kedepan.', '1587231056', 1),
+(56, 4, 71, '2020-04-18 17:28:19', 'Waalaikumsalam. In sya alloh nanti saya datangi beliau untuk memerintahkan supaya isolasi mandiri dirumah selama waktu yang ditentukan.', '1587230911', 1);
 
 --
--- Triggers `tanggapan`
+-- Trigger `tanggapan`
 --
 DELIMITER $$
 CREATE TRIGGER `acc_pengaduan` AFTER UPDATE ON `tanggapan` FOR EACH ROW UPDATE `pengaduan` SET `status` = 3 WHERE `pengaduan`.`id_pengaduan`=old.id_pengaduan
@@ -210,7 +219,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -223,23 +232,26 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `nama`, `username`, `password`, `role`) VALUES
-(40, 'admin@sipmas.com', 'Alfiani Fitria K', 'admin1', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', 'admin'),
-(60, 'masyarakat1@gmail.com', 'Masyarakat1', 'masyarakat1', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'masyarakat'),
-(61, 'masyarakat2@gmail.com', 'Masyarakat2', 'masyarakat2', '$2y$10$ufG.0NseEll1ZQgICAnQBeMZpgwcWNearQJJ3ZoIXFV8uXV6CGmdi', 'masyarakat'),
-(62, 'petugas1@gmail.com', 'Alfiani Fitria Kusnadi', 'petugas1', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', 'petugas'),
-(63, 'petugas2@gmail.com', 'Alfan Fabian', 'petugas2', '$2y$10$piCN51ABR8hWAzgUF5puaeO5cCyGvAqoAlIcBLOZHuEQkL9qMKhpm', 'petugas'),
-(64, 'petugas3@gmail.com', 'Wini Puspa Rahayu', 'petugas3', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
-(65, 'petugas4@gmail.com', 'Anisa Rahma', 'petugas4', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
-(66, 'petugas5@gmail.com', 'Listiani', 'petugas5', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas');
+(70, 'admin1@gmail.com', 'Alfiani Fitria K', 'admin1', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'admin'),
+(71, 'petugas1@gmail.com', 'Nikita Mirzani', 'petugas1', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
+(72, 'petugas2@gmail.com', 'Tia WZ', 'petugas2', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
+(73, 'petugas3@gmail.com', 'Citra Kirana', 'petugas3', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
+(74, 'petugas4@gmail.com', 'Zia Putri Rahmawati', 'petugas4', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
+(75, 'petugas5@gmail.com', 'Geri Abdul Malik', 'petugas5', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 'petugas'),
+(76, 'milhamf@gmail.com', 'Muhammad Ilham Firmansyah', 'milhamf', '$2y$10$PdL2FGsBiTMGrNuiT520cOQM5HaVfaaEBu8MKImIRCdSxL8DaGOLC', 'masyarakat'),
+(77, 'masyarakat2@gmail.com', 'Alfan Fabian', 'masyarakat2', '$2y$10$zlbduECeWgjyKT0OsGrwMemKRlvtrOfu5mfhX1M8rWB4S8otJt2FO', 'masyarakat'),
+(78, 'alfan.f@gmail.com', 'Alfan Fabian', 'alfan.f', '$2y$10$rCx7zBuzR5fYUQKpJEY41u9Dsbn19xPD82XvOFqNKuvsx3A7SE1U6', 'masyarakat'),
+(83, 'admin2@gmail.com', 'Anisa', 'admin2', '$2y$10$wSkb7ibrcYQO0yLgUm0pw.ecquGVzN8yLnz.1LLX9VPEb/4qGw2f6', 'admin'),
+(84, 'gagas.exclusive@gmail.com', 'Gagas Sangga Pratama', 'gagas.exclusive', '$2y$10$64ZueDIepO18IKHfVcNtY.7AM9790KLSQj6A.yTVHG5feqnnENEkC', 'masyarakat');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `warga`
+-- Struktur dari tabel `warga`
 --
 
 CREATE TABLE `warga` (
@@ -253,19 +265,31 @@ CREATE TABLE `warga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `warga`
+-- Dumping data untuk tabel `warga`
 --
 
 INSERT INTO `warga` (`nik`, `username`, `nama`, `password`, `telp`, `image`, `email`) VALUES
-('1263748192716257', 'masyarakat1', 'Masyarakat1', '$2y$10$U2JxqOBTxsHpYiJ1cr9luubAOEeYfz7F8Cq4aYqHtNrr3jE12bSVK', 2147483647, 'avatar.png', 'masyarakat1@gmail.com'),
-('2736162738172635', 'masyarakat2', 'Masyarakat2', '$2y$10$ufG.0NseEll1ZQgICAnQBeMZpgwcWNearQJJ3ZoIXFV8uXV6CGmdi', 2147483647, 'avatar.png', 'masyarakat2@gmail.com');
+('1263748192716257', 'alfan.f', 'Alfan Fabian', '$2y$10$rCx7zBuzR5fYUQKpJEY41u9Dsbn19xPD82XvOFqNKuvsx3A7SE1U6', 2147483647, 'avatar.png', 'alfan.f@gmail.com'),
+('1263748192717234', 'gagas.exclusive', 'Gagas Sangga Pratama', '$2y$10$64ZueDIepO18IKHfVcNtY.7AM9790KLSQj6A.yTVHG5feqnnENEkC', 2147483647, 'avatar.png', 'gagas.exclusive@gmail.com'),
+('1263748192717257', 'milhamf', 'Muhammad Ilham Firmansyah', '$2y$10$PdL2FGsBiTMGrNuiT520cOQM5HaVfaaEBu8MKImIRCdSxL8DaGOLC', 2147483647, 'avatar.png', 'milhamf@gmail.com'),
+('2343234512324345', 'masyarakat2', 'Alfan Fabian', '$2y$10$zlbduECeWgjyKT0OsGrwMemKRlvtrOfu5mfhX1M8rWB4S8otJt2FO', 2147483647, 'avatar.png', 'masyarakat2@gmail.com');
 
 --
--- Triggers `warga`
+-- Trigger `warga`
 --
 DELIMITER $$
 CREATE TRIGGER `insert_warga` AFTER INSERT ON `warga` FOR EACH ROW INSERT INTO
 users
+SET
+email = new.email,
+nama = new.nama,
+username = new.username,
+password = new.password,
+role = 3
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_warga` AFTER UPDATE ON `warga` FOR EACH ROW UPDATE users
 SET
 email = new.email,
 nama = new.nama,
@@ -280,43 +304,44 @@ DELIMITER ;
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indexes for table `kategori`
+-- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id_kategori`);
 
 --
--- Indexes for table `pengaduan`
+-- Indeks untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
   ADD PRIMARY KEY (`id_pengaduan`);
 
 --
--- Indexes for table `petugas`
+-- Indeks untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
   ADD PRIMARY KEY (`id_petugas`);
 
 --
--- Indexes for table `tanggapan`
+-- Indeks untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  ADD PRIMARY KEY (`id_tanggapan`);
+  ADD PRIMARY KEY (`id_tanggapan`),
+  ADD UNIQUE KEY `id_pengaduan` (`id_pengaduan`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `warga`
+-- Indeks untuk tabel `warga`
 --
 ALTER TABLE `warga`
   ADD PRIMARY KEY (`nik`),
@@ -324,44 +349,38 @@ ALTER TABLE `warga`
   ADD UNIQUE KEY `nik_2` (`nik`,`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `kategori`
+-- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
   MODIFY `id_kategori` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `pengaduan`
+-- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT for table `petugas`
---
-ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(128) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT for table `tanggapan`
+-- AUTO_INCREMENT untuk tabel `tanggapan`
 --
 ALTER TABLE `tanggapan`
-  MODIFY `id_tanggapan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_tanggapan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
